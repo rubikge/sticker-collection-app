@@ -7,7 +7,7 @@ function App() {
     <Router>
       <div className="App">
         <header className="App-header">
-          <h1>Sticker Collection</h1>
+          <h1>Rubik Sticker Collection</h1>
         </header>
         <main>
           <Routes>
