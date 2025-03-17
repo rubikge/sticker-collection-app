@@ -2,7 +2,7 @@
   "name": "sticker-collection-client",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://rubikge.github.io/sticker-collection",
+  "homepage": "https://rubikge.github.io/sticker-collection-app",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
