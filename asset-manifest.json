@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/sticker-collection/static/css/main.48eccf31.css",
-    "main.js": "/sticker-collection/static/js/main.8e1ee94f.js",
-    "index.html": "/sticker-collection/index.html",
-    "main.48eccf31.css.map": "/sticker-collection/static/css/main.48eccf31.css.map",
-    "main.8e1ee94f.js.map": "/sticker-collection/static/js/main.8e1ee94f.js.map"
+    "main.css": "/sticker-collection-app/static/css/main.48eccf31.css",
+    "main.js": "/sticker-collection-app/static/js/main.c2ccaf5f.js",
+    "index.html": "/sticker-collection-app/index.html",
+    "main.48eccf31.css.map": "/sticker-collection-app/static/css/main.48eccf31.css.map",
+    "main.c2ccaf5f.js.map": "/sticker-collection-app/static/js/main.c2ccaf5f.js.map"
   },
   "entrypoints": [
     "static/css/main.48eccf31.css",
-    "static/js/main.8e1ee94f.js"
+    "static/js/main.c2ccaf5f.js"
   ]
 }
