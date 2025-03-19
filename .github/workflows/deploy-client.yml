@@ -1,12 +1,11 @@
-name: Deploy to GitHub Pages
+name: Deploy Client to GitHub Pages
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
     paths:
       - 'client/**'
-      - '.github/workflows/deploy.yml'
+      - '.github/workflows/deploy-client.yml'
 
 jobs:
   deploy:
