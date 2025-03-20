@@ -126,11 +126,10 @@ const StickerGrid = () => {
     return availableStickers.every(sticker => userStickerIds.includes(sticker._id));
   };
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error}</div>;
-
   return (
     <div className="sticker-grid">
+      {loading && <div className="loading">Loading...</div>}
+      {error && <div className="error">Error: {error}</div>}
       <div className="grid-container">
         {stickers.map((sticker) => (
           <div key={sticker._id || sticker.id} className="sticker-card">
