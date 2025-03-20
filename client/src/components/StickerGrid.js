@@ -36,7 +36,9 @@ const StickerGrid = () => {
 
   const fetchUserStickers = async (telegramId) => {
     try {
-      const response = await fetch(`${config.apiUrl}/stickers/user/${telegramId}`);
+      const path = `${config.apiUrl}/stickers/user/${telegramId}`;
+      console.log(path);
+      const response = await fetch(path);
       if (!response.ok) {
         throw new Error('Failed to fetch stickers');
       }
