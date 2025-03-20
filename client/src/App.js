@@ -4,7 +4,7 @@ import StickerGrid from './components/StickerGrid';
 
 function App() {
   return (
-    <Router>
+    <Router basename="/sticker-collection-app">
       <div className="App">
         <header className="App-header">
           <h1>Rubik Sticker Collection</h1>
