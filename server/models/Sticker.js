@@ -5,9 +5,10 @@ const stickerSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  imageUrl: {
+  filename: {
     type: String,
-    required: true
+    required: true,
+    unique: true
   },
   rarity: {
     type: String,

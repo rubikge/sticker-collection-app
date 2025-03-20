@@ -8,61 +8,37 @@ const stickersDir = path.join(__dirname, '../../client/public/stickers');
 
 async function checkStickers() {
   try {
-    // Connect to MongoDB
-    await mongoose.connect(process.env.MONGODB_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true
-    });
+    await mongoose.connect(process.env.MONGODB_URI);
     console.log('Connected to MongoDB');
 
-    // Get all stickers from database
     const dbStickers = await Sticker.find({});
-    console.log(`Found ${dbStickers.length} stickers in database`);
+    const pngFiles = fs.readdirSync(stickersDir).filter(file => file.endsWith('.png'));
 
-    // Get all PNG files from stickers directory
-    const files = fs.readdirSync(stickersDir);
-    const pngFiles = files.filter(file => file.endsWith('.png'));
-    console.log(`Found ${pngFiles.length} PNG files in stickers directory`);
+    const missingFiles = dbStickers.filter(sticker => !pngFiles.includes(sticker.filename));
+    const missingDbEntries = pngFiles.filter(file => !dbStickers.some(sticker => sticker.filename === file));
 
-    // Check for missing files
-    const missingFiles = dbStickers.filter(sticker => {
-      const fileName = path.basename(sticker.imageUrl);
-      return !pngFiles.includes(fileName);
-    });
-
-    if (missingFiles.length > 0) {
+    if (missingFiles.length) {
       console.log('\n⚠️ Missing files in stickers directory:');
-      missingFiles.forEach(sticker => {
-        console.log(`- ${path.basename(sticker.imageUrl)} (${sticker.name})`);
-      });
+      missingFiles.forEach(sticker => console.log(`- ${sticker.filename} (${sticker.name})`));
     }
 
-    // Check for missing database entries
-    const missingDbEntries = pngFiles.filter(file => {
-      return !dbStickers.some(sticker => path.basename(sticker.imageUrl) === file);
+    if (missingDbEntries.length) {
+      console.log('\n⚠️ Missing database entries for files:');
+      missingDbEntries.forEach(file => console.log(`- ${file}`));
+    }
+
+    console.log('\n📊 Summary:', {
+      'Total stickers in database': dbStickers.length,
+      'Total PNG files': pngFiles.length,
+      'Missing files': missingFiles.length,
+      'Missing database entries': missingDbEntries.length
     });
 
-    if (missingDbEntries.length > 0) {
-      console.log('\n⚠️ Missing database entries for files:');
-      missingDbEntries.forEach(file => {
-        console.log(`- ${file}`);
-      });
-    }
-
-    // Print summary
-    console.log('\n📊 Summary:');
-    console.log(`- Total stickers in database: ${dbStickers.length}`);
-    console.log(`- Total PNG files: ${pngFiles.length}`);
-    console.log(`- Missing files: ${missingFiles.length}`);
-    console.log(`- Missing database entries: ${missingDbEntries.length}`);
-
-    if (missingFiles.length === 0 && missingDbEntries.length === 0) {
+    if (!missingFiles.length && !missingDbEntries.length) {
       console.log('\n✅ Everything is synchronized!');
     }
 
-    // Close connection
     await mongoose.connection.close();
-    console.log('\nDatabase connection closed');
   } catch (error) {
     console.error('Error checking stickers:', error);
     process.exit(1);

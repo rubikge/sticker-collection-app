@@ -27,8 +27,8 @@ async function initializeStickers() {
         const name = path.parse(file).name;
         return {
           name: name.replace(/_/g, ' '),
-          imageUrl: `/stickers/${file}`,
-          rarity: determineRarity(name)
+          filename: file,
+          rarity: determineRarity(file)
         };
       });
 
@@ -45,7 +45,7 @@ async function initializeStickers() {
   }
 }
 
-function determineRarity(name) {
+function determineRarity(filename) {
   // You can customize this logic based on your naming convention
   const rarities = ['common', 'rare', 'epic', 'legendary'];
   const randomIndex = Math.floor(Math.random() * rarities.length);
