@@ -45,8 +45,9 @@ bot.on('message', (msg) => {
 });
 
 // Routes
-app.use('/api/stickers', require('./routes/stickers'));
-app.use('/api/users', require('./routes/users'));
+app.use('/stickers', require('./routes/stickers'));
+app.use('/users', require('./routes/users'));
+app.use('/test', require('./routes/test'));
 
 // Start server
 app.listen(port, () => {
