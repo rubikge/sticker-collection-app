@@ -133,7 +133,7 @@ const StickerGrid = () => {
       <div className="grid-container">
         {stickers.map((sticker) => (
           <div key={sticker._id || sticker.id} className="sticker-card">
-            <img src={sticker.imageUrl} alt={sticker.name} />
+            <img src={`/sticker-collection-app/stickers/${sticker.filename}`} alt={sticker.name} />
             <h3>{sticker.name}</h3>
             <span className={`rarity ${sticker.rarity}`}>{sticker.rarity}</span>
             <button 
