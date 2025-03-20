@@ -112,4 +112,22 @@
 
 .delete-button:hover {
   background-color: #cc0000;
+}
+
+.loading, .error {
+  text-align: center;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 8px;
+}
+
+.loading {
+  background-color: #f0f0f0;
+  color: #666;
+}
+
+.error {
+  background-color: #ffebee;
+  color: #c62828;
+  border: 1px solid #ffcdd2;
 } 
