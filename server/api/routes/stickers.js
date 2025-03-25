@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const Sticker = require('../models/Sticker');
-const User = require('../models/User');
+const Sticker = require('../../models/Sticker');
+const User = require('../../models/User');
 
 // Get all stickers
 router.get('/', async (req, res) => {

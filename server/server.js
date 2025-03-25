@@ -1,20 +1,10 @@
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
-const cors = require('cors');
 const TelegramBot = require('node-telegram-bot-api');
 
 const app = express();
 const port = process.env.PORT || 5000;
-
-// Middleware
-app.use(cors({
-  origin: '*',
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept'],
-  credentials: true
-}));
-app.use(express.json());
 
 // Check for required environment variables
 if (!process.env.TELEGRAM_BOT_TOKEN) {
@@ -49,10 +39,8 @@ bot.on('message', (msg) => {
   console.log('Received message:', msg);
 });
 
-// Routes
-app.use('/sticker-app/stickers', require('./routes/stickers'));
-app.use('/sticker-app/users', require('./routes/users'));
-app.use('/sticker-app/test', require('./routes/test'));
+// Use API router
+app.use('/sticker-app', require('./api/router'));
 
 // Start server
 app.listen(port, () => {

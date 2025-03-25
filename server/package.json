@@ -4,8 +4,8 @@
   "description": "Telegram sticker collection simulator backend",
   "main": "index.js",
   "scripts": {
-    "start": "node --no-deprecation index.js",
-    "dev": "nodemon --no-deprecation index.js",
+    "start": "node --no-deprecation server.js",
+    "dev": "nodemon --no-deprecation server.js",
     "init-stickers": "node --no-deprecation scripts/initStickers.js",
     "check-stickers": "node --no-deprecation scripts/checkStickers.js",
     "init-test-users": "node --no-deprecation scripts/initTestUsers.js"

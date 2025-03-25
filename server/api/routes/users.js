@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const User = require('../models/User');
+const User = require('../../models/User');
 
 // Get or create user
 router.post('/auth', async (req, res) => {
