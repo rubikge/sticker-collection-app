@@ -15,8 +15,8 @@ async function initializeStickers() {
     });
     console.log('Connected to MongoDB');
 
-    // Clear existing stickers
-    await Sticker.deleteMany({});
+    // Clear existing stickers from the stickers collection
+    await mongoose.connection.collection('stickers').deleteMany({});
     console.log('Cleared existing stickers');
 
     // Read sticker files
@@ -32,9 +32,9 @@ async function initializeStickers() {
         };
       });
 
-    // Insert stickers into database
-    await Sticker.insertMany(stickers);
-    console.log(`Successfully added ${stickers.length} stickers to the database`);
+    // Insert stickers into the stickers collection
+    await mongoose.connection.collection('stickers').insertMany(stickers);
+    console.log(`Successfully added ${stickers.length} stickers to the stickers collection`);
 
     // Close connection
     await mongoose.connection.close();
