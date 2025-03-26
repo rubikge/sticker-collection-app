@@ -29,15 +29,15 @@ mongoose.connect(process.env.MONGODB_URI, {
 });
 
 // Telegram Bot setup
-const bot = new TelegramBot(process.env.TELEGRAM_BOT_TOKEN, { polling: true });
+// const bot = new TelegramBot(process.env.TELEGRAM_BOT_TOKEN, { polling: true });
 
-bot.on('polling_error', (error) => {
-  console.error('Telegram Bot polling error:', error);
-});
+// bot.on('polling_error', (error) => {
+//   console.error('Telegram Bot polling error:', error);
+// });
 
-bot.on('message', (msg) => {
-  console.log('Received message:', msg);
-});
+// bot.on('message', (msg) => {
+//   console.log('Received message:', msg);
+// });
 
 // Use API router
 app.use('/sticker-app', require('./api/router'));
